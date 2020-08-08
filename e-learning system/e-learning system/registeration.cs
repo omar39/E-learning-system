@@ -10,11 +10,13 @@ using System.Windows.Forms;
 
 namespace e_learning_system
 {
-    public partial class Form1 : Form
+    public partial class registeration : Form
     {
-        public Form1()
+        public registeration()
         {
             InitializeComponent();
         }
+
+
     }
 }
