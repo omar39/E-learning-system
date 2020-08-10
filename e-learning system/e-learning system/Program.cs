@@ -16,7 +16,7 @@ namespace e_learning_system
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Sign_in());
+            Application.Run(new AdminForm());
         }
     }
 }
