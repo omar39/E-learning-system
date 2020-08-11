@@ -1,28 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace e_learning_system
 {
     abstract class User
     {
-        protected string name { set; get; }
-        protected string phoneNumber { set; get; }
-        protected int userID { set; get; }
+        protected string name { set { this.name = value; } get {return name; } }
+        protected string phoneNumber { set {this.phoneNumber=value; } get {return phoneNumber; } }
+        protected int userID { set { this.userID = value; } get { return userID; } }
 
-        public int getUserID()
+        public User(int userID, string name, string phoneNumber)
         {
-            return userID;
-        }
-        public string getName()
-        {
-            return name;
-        }
-        public string getPhoneNumber()
-        {
-            return phoneNumber;
+            this.userID = userID;
+            this.name = name;
+            this.phoneNumber = phoneNumber;
         }
         public abstract bool signIn();
     }

@@ -1,18 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace e_learning_system
 {
     class Admin : User
     {
-        private Admin(int userID, string name, string phoneNumber)
+        private Admin instance;
+        private Admin(int userID, string name, string phoneNumber):base(userID, name, phoneNumber)
         {
-            this.userID = userID;
-            this.name = name;
-            this.phoneNumber = phoneNumber;
+            
         }
         public override bool signIn()
         {
@@ -26,6 +21,10 @@ namespace e_learning_system
         public bool approveUser(User user)
         {
             return true;
+        }
+        public Admin getInstance(int userID, string name, string phoneNumber)
+        {
+            return instance == null ? instance = new Admin(userID, name, phoneNumber) : null;
         }
     }
 }
