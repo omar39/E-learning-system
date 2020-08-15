@@ -2,7 +2,7 @@
 
 namespace e_learning_system
 {
-    abstract class Teacher : User
+     class Teacher : User, ITeacher
     {
         protected string description;
         public int yearsOfExperience { set { this.yearsOfExperience = value; } get { return yearsOfExperience; } }

@@ -53,7 +53,9 @@
     <Compile Include="AdminForm.Designer.cs">
       <DependentUpon>AdminForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Classroom.cs" />
     <Compile Include="ClassTeacher.cs" />
+    <Compile Include="ITeacher.cs" />
     <Compile Include="registeration.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -68,8 +70,16 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Student.cs" />
+    <Compile Include="Subject.cs" />
     <Compile Include="SubjectTeacher.cs" />
     <Compile Include="Teacher.cs" />
+    <Compile Include="TeacherForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TeacherForm.Designer.cs">
+      <DependentUpon>TeacherForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="User.cs" />
     <EmbeddedResource Include="AdminForm.resx">
       <DependentUpon>AdminForm.cs</DependentUpon>
@@ -88,6 +98,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Sign_in.resx">
       <DependentUpon>Sign_in.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TeacherForm.resx">
+      <DependentUpon>TeacherForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

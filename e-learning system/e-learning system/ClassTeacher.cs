@@ -2,19 +2,20 @@
 
 namespace e_learning_system
 {
-    class ClassTeacher : TeacherDescriptor
+    class ClassTeacher : ITeacher
     {
         // TODO: declare classroom object
         Classroom classroom;
-        public ClassTeacher(Classroom classroom, Teacher teacher):
-            base(teacher)
+        ITeacher _teacher;
+        public ClassTeacher(Classroom classroom, ITeacher teacher)
         {
             //classroom 
             this.classroom = classroom;
+            _teacher = teacher;
         }
-        public override string getDescription()
+        public string getDescription()
         {
-            return "supervises class " + classroom.getName();
+            return _teacher.getDescription() + "supervises class " + classroom.getName();
         }
         public Classroom getClassroom()
         {
