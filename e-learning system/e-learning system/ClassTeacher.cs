@@ -2,12 +2,12 @@
 
 namespace e_learning_system
 {
-    class ClassTeacher : Teacher
+    class ClassTeacher : TeacherDescriptor
     {
         // TODO: declare classroom object
         Classroom classroom;
-        public ClassTeacher(int userID, string name, string phoneNumber, int yearsOfExperience, Classroom classroom)
-            :base(userID,name, phoneNumber, yearsOfExperience )
+        public ClassTeacher(Classroom classroom, Teacher teacher):
+            base(teacher)
         {
             //classroom 
             this.classroom = classroom;
@@ -20,5 +20,7 @@ namespace e_learning_system
         {
             return classroom;
         }
+
     }
+
 }

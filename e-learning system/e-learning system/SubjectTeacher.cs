@@ -2,19 +2,22 @@
 
 namespace e_learning_system
 {
-    class SubjectTeacher : Teacher
+    class SubjectTeacher : TeacherDescriptor
     {
         //TODO : delcare Subject object
+        Teacher teacher;
         Subject subject;
-        public SubjectTeacher(int userID, string name, string phoneNumber, int yearsOfExperience, Subject subject)
-            :base(userID, name, phoneNumber, yearsOfExperience)
+        public SubjectTeacher(Subject subject, Teacher teacher)
+            :base(teacher)
         {
             // TODO : initialize Subject object
             this.subject = subject;
+            this.teacher = teacher;
         }
+
         public override string getDescription()
         {
-            return "teaches " + subject.getName();
+            return teacher.getDescription() + "teaches " + subject.getName();
         }
     }
 }

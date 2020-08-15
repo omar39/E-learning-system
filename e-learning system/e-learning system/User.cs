@@ -4,9 +4,9 @@ namespace e_learning_system
 {
     abstract class User
     {
-        protected string name { set { this.name = value; } get {return name; } }
-        protected string phoneNumber { set {this.phoneNumber=value; } get {return phoneNumber; } }
-        protected int userID { set { this.userID = value; } get { return userID; } }
+        public string name { set { this.name = value; } get {return name; } }
+        public string phoneNumber { set {this.phoneNumber=value; } get {return phoneNumber; } }
+        public int userID { set { this.userID = value; } get { return userID; } }
 
         public User(int userID, string name, string phoneNumber)
         {
