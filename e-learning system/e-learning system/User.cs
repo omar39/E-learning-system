@@ -8,6 +8,7 @@ namespace e_learning_system
         public string phoneNumber { set {this.phoneNumber=value; } get {return phoneNumber; } }
         public int userID { set { this.userID = value; } get { return userID; } }
 
+        public User() { }
         public User(int userID, string name, string phoneNumber)
         {
             this.userID = userID;
