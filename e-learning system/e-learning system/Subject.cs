@@ -9,15 +9,20 @@ namespace e_learning_system
     class Subject
     {
         private double grade;
-        private String name;
-        private String description;
-        public String getName()
+        private string name;
+        private string description;
+        public string getName()
         {
             return this.name;
         }
-        public String getDescription()
+        public string getDescription()
         {
             return this.description;
+        }
+        public Subject(string name, string description)
+        {
+            this.name = name;
+            this.description = description;
         }
     }
 }

@@ -9,12 +9,12 @@ namespace e_learning_system
 {
     class Classroom
     {
-        private String name;
+        private string name;
         readonly int originalCapacity = 30;
         private Subject subject;
         private List<Student> students = new List<Student>();
         // hena el teachers variable
-        public Classroom(String name1 , Subject subj , List<Student> students1)
+        public Classroom(string name1 , Subject subj , List<Student> students1)
         {
             this.name = name1;
             this.subject = subj;
