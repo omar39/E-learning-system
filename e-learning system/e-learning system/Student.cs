@@ -16,7 +16,8 @@ namespace e_learning_system
             return true;
         }
         public Student() { }
-        Student(int userId, string name, string phoneNumber):base(userId,name ,phoneNumber)
+        public Student(string name, string phoneNumber)
+            :base(name ,phoneNumber)
         {
 
         }
