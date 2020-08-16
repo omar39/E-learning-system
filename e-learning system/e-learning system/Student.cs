@@ -27,6 +27,7 @@ namespace e_learning_system
             {
                 class1.addStudent(this);
                 this.studentClasses.Add(class1);
+                this.grades.Add(new Tuple<Subject, double>(class1.getSubject(), 0));
                 return true;
             }
             else return false;
@@ -66,11 +67,7 @@ namespace e_learning_system
             double final_grade = sum_of_grades / num_of_subjects;
             return final_grade;
         }
-        public void enroll(Subject subject)
-        {
-            Tuple<Subject, double> tmp= new Tuple<Subject, double>(subject,0);
-            grades.Add(tmp);
-        }
+
         public void addComment(string comment)
         {
             comments.Add(comment);
