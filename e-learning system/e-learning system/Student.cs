@@ -8,7 +8,7 @@ namespace e_learning_system
 {
     class Student : User
     {
-        List<Tuple<Classroom, Subject>> studentClasses = new List<Tuple<Classroom, Subject>>();
+        List<Classroom> studentClasses = new List<Classroom>();
         List<Tuple<Subject, double>> grades = new List<Tuple<Subject, double>>();
         List<string> comments = new List<string>();
         public override bool signIn()
@@ -21,36 +21,36 @@ namespace e_learning_system
         {
 
         }
-        public bool registerToClass(Classroom class1, Subject subject)
+        public bool registerToClass(Classroom class1)
         {
             if (class1.calculateCapacity() > 0)
             {
                 class1.addStudent(this);
-                this.studentClasses.Add(new Tuple<Classroom, Subject>(class1, subject));
+                this.studentClasses.Add(class1);
                 return true;
             }
             else return false;
 
         }
-        public List<Tuple<Classroom,Subject>> GetClassrooms()
+        public List<Classroom> GetClassrooms()
         {
             return this.studentClasses;
         }
-        public bool changeClassRoom(Classroom class1,Subject subject)
+        public bool changeClassRoom(Classroom class1)
         {
             if (class1.calculateCapacity() > 0)
             {
                 for(int x=0;x<studentClasses.Count;x++ )
                 {
-                    if(studentClasses[x].Item2 == subject)
+                    if(studentClasses[x].getSubject() == class1.getSubject())
                     {
-                        studentClasses[x].Item1.removeStudent(this);
+                        studentClasses[x].removeStudent(this);
                         studentClasses.RemoveAt(x);
                     }
                 }
                 
                 class1.addStudent(this);
-                studentClasses.Add(new Tuple<Classroom, Subject>(class1, subject));
+                studentClasses.Add(class1);
                 return true;
             }
             else return false;
