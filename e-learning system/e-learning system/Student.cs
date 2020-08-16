@@ -8,7 +8,7 @@ namespace e_learning_system
 {
     class Student : User
     {
-        Classroom current_class;
+        List<Tuple<Classroom, Subject>> studentClasses = new List<Tuple<Classroom, Subject>>();
         List<Tuple<Subject, double>> grades = new List<Tuple<Subject, double>>();
         List<string> comments = new List<string>();
         public override bool signIn()
@@ -21,28 +21,36 @@ namespace e_learning_system
         {
 
         }
-        public bool registerToClass(Classroom class1)
+        public bool registerToClass(Classroom class1, Subject subject)
         {
             if (class1.calculateCapacity() > 0)
             {
                 class1.addStudent(this);
-                this.current_class = class1;
+                this.studentClasses.Add(new Tuple<Classroom, Subject>(class1, subject));
                 return true;
             }
             else return false;
 
         }
-        public Classroom GetClassroom()
+        public List<Tuple<Classroom,Subject>> GetClassrooms()
         {
-            return this.current_class;
+            return this.studentClasses;
         }
-        public bool changeClassRoom(Classroom class1)
+        public bool changeClassRoom(Classroom class1,Subject subject)
         {
             if (class1.calculateCapacity() > 0)
             {
-                this.current_class.removeStudent(this);
+                for(int x=0;x<studentClasses.Count;x++ )
+                {
+                    if(studentClasses[x].Item2 == subject)
+                    {
+                        studentClasses[x].Item1.removeStudent(this);
+                        studentClasses.RemoveAt(x);
+                    }
+                }
+                
                 class1.addStudent(this);
-                this.current_class = class1;
+                studentClasses.Add(new Tuple<Classroom, Subject>(class1, subject));
                 return true;
             }
             else return false;
