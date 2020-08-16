@@ -10,6 +10,7 @@ namespace e_learning_system
     {
         Classroom current_class;
         List<Tuple<Subject, double>> grades = new List<Tuple<Subject, double>>();
+        List<string> comments = new List<string>();
         public override bool signIn()
         {
             return true;
@@ -56,7 +57,15 @@ namespace e_learning_system
             double final_grade = sum_of_grades / num_of_subjects;
             return final_grade;
         }
-
+        public void enroll(Subject subject)
+        {
+            Tuple<Subject, double> tmp= new Tuple<Subject, double>(subject,0);
+            grades.Add(tmp);
+        }
+        public void addComment(string comment)
+        {
+            comments.Add(comment);
+        }
         
     }
 }
