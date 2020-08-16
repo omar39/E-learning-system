@@ -33,11 +33,17 @@
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.classesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
             this.manageClassGroup = new System.Windows.Forms.GroupBox();
             this.MyClassesGroup = new System.Windows.Forms.GroupBox();
             this.chatView = new System.Windows.Forms.ListView();
-            this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.searchBar = new System.Windows.Forms.TextBox();
+            this.join_btn = new System.Windows.Forms.Button();
+            this.searchResultsList = new System.Windows.Forms.ListBox();
+            this.search_btn = new System.Windows.Forms.Button();
             this.menuStrip.SuspendLayout();
+            this.manageClassGroup.SuspendLayout();
             this.MyClassesGroup.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -81,11 +87,23 @@
             // classesToolStripMenuItem
             // 
             this.classesToolStripMenuItem.Name = "classesToolStripMenuItem";
-            this.classesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.classesToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
             this.classesToolStripMenuItem.Text = "Classes";
+            // 
+            // toolStripComboBox1
+            // 
+            this.toolStripComboBox1.Name = "toolStripComboBox1";
+            this.toolStripComboBox1.Size = new System.Drawing.Size(121, 23);
+            this.toolStripComboBox1.SelectedIndexChanged += new System.EventHandler(this.toolStripComboBox1_SelectedIndexChanged);
+            this.toolStripComboBox1.Click += new System.EventHandler(this.toolStripComboBox1_Click);
             // 
             // manageClassGroup
             // 
+            this.manageClassGroup.Controls.Add(this.search_btn);
+            this.manageClassGroup.Controls.Add(this.searchResultsList);
+            this.manageClassGroup.Controls.Add(this.join_btn);
+            this.manageClassGroup.Controls.Add(this.searchBar);
+            this.manageClassGroup.Controls.Add(this.label1);
             this.manageClassGroup.Location = new System.Drawing.Point(444, 50);
             this.manageClassGroup.Name = "manageClassGroup";
             this.manageClassGroup.Size = new System.Drawing.Size(278, 371);
@@ -103,7 +121,7 @@
             this.MyClassesGroup.Size = new System.Drawing.Size(406, 371);
             this.MyClassesGroup.TabIndex = 4;
             this.MyClassesGroup.TabStop = false;
-            this.MyClassesGroup.Text = "My Classes";
+            this.MyClassesGroup.Text = "Posts";
             // 
             // chatView
             // 
@@ -115,12 +133,51 @@
             this.chatView.UseCompatibleStateImageBehavior = false;
             this.chatView.View = System.Windows.Forms.View.Tile;
             // 
-            // toolStripComboBox1
+            // label1
             // 
-            this.toolStripComboBox1.Name = "toolStripComboBox1";
-            this.toolStripComboBox1.Size = new System.Drawing.Size(121, 23);
-            this.toolStripComboBox1.SelectedIndexChanged += new System.EventHandler(this.toolStripComboBox1_SelectedIndexChanged);
-            this.toolStripComboBox1.Click += new System.EventHandler(this.toolStripComboBox1_Click);
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(18, 52);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(62, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Join a class";
+            // 
+            // searchBar
+            // 
+            this.searchBar.Location = new System.Drawing.Point(100, 52);
+            this.searchBar.Name = "searchBar";
+            this.searchBar.Size = new System.Drawing.Size(114, 20);
+            this.searchBar.TabIndex = 1;
+            // 
+            // join_btn
+            // 
+            this.join_btn.Location = new System.Drawing.Point(139, 259);
+            this.join_btn.Name = "join_btn";
+            this.join_btn.Size = new System.Drawing.Size(75, 23);
+            this.join_btn.TabIndex = 3;
+            this.join_btn.Text = "Join";
+            this.join_btn.UseVisualStyleBackColor = true;
+            this.join_btn.Visible = false;
+            this.join_btn.Click += new System.EventHandler(this.join_btn_Click);
+            // 
+            // searchResultsList
+            // 
+            this.searchResultsList.FormattingEnabled = true;
+            this.searchResultsList.Location = new System.Drawing.Point(21, 142);
+            this.searchResultsList.Name = "searchResultsList";
+            this.searchResultsList.Size = new System.Drawing.Size(193, 95);
+            this.searchResultsList.TabIndex = 4;
+            this.searchResultsList.SelectedIndexChanged += new System.EventHandler(this.searchResultsList_SelectedIndexChanged);
+            // 
+            // search_btn
+            // 
+            this.search_btn.Location = new System.Drawing.Point(21, 93);
+            this.search_btn.Name = "search_btn";
+            this.search_btn.Size = new System.Drawing.Size(75, 23);
+            this.search_btn.TabIndex = 5;
+            this.search_btn.Text = "Search";
+            this.search_btn.UseVisualStyleBackColor = true;
+            this.search_btn.Click += new System.EventHandler(this.search_btn_Click);
             // 
             // TeacherForm
             // 
@@ -135,6 +192,8 @@
             this.Text = "TeacherForm";
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
+            this.manageClassGroup.ResumeLayout(false);
+            this.manageClassGroup.PerformLayout();
             this.MyClassesGroup.ResumeLayout(false);
             this.MyClassesGroup.PerformLayout();
             this.ResumeLayout(false);
@@ -153,5 +212,10 @@
         private System.Windows.Forms.GroupBox MyClassesGroup;
         private System.Windows.Forms.ListView chatView;
         private System.Windows.Forms.ToolStripComboBox toolStripComboBox1;
+        private System.Windows.Forms.TextBox searchBar;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button join_btn;
+        private System.Windows.Forms.ListBox searchResultsList;
+        private System.Windows.Forms.Button search_btn;
     }
 }

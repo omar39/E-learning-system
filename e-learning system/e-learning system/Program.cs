@@ -16,8 +16,8 @@ namespace e_learning_system
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            ITeacher baseTeacher = new Teacher(0, "name", "010", 2);
-            Application.Run(new TeacherForm(baseTeacher));
+            
+            Application.Run(new registeration());
         }
     }
 }

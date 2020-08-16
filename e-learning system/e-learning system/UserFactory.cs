@@ -8,13 +8,15 @@ namespace e_learning_system
 {
     class UserFactory
     {
-        public User make_user(string type)
+        public static User make_user(string type, string name, string phoneNumber)
         {
-          
-            if (type == "teacher")
-                return new Teacher();
-            else if (type == "student")
-                return new Student();
+
+            if (type == "Teacher")
+                return new Teacher(name, phoneNumber);
+            else if (type == "Student")
+                return new Student(name, phoneNumber);
+            else if (type == "Admin")
+                return Admin.getInstance(name, phoneNumber);
             else return null;
      
         }

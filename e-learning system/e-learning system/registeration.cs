@@ -17,6 +17,11 @@ namespace e_learning_system
             InitializeComponent();
         }
 
-
+        private void register_btn_Click(object sender, EventArgs e)
+        {
+            //check user occurence in database
+            string userType = usersTypes.SelectedItem.ToString();
+            User user = UserFactory.make_user(userType, fullName_txt.Text, phoneNumber_txt.Text);
+        }
     }
 }

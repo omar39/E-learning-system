@@ -12,7 +12,8 @@ namespace e_learning_system
 {
     public partial class TeacherForm : Form
     {
-        public TeacherForm(ITeacher teacher)
+        ITeacher _teacher;
+        public TeacherForm()
         {
             InitializeComponent();
         }
@@ -31,6 +32,25 @@ namespace e_learning_system
         private void toolStripComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             // Load class data of the current teacher
+            
+        }
+
+
+        private void join_btn_Click(object sender, EventArgs e)
+        {
+            string className = searchResultsList.SelectedItem.ToString();
+            toolStripComboBox1.Items.Add(className);
+            // add that teacher to that classroom database
+        }
+
+        private void searchResultsList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            join_btn.Enabled = true;
+        }
+
+        private void search_btn_Click(object sender, EventArgs e)
+        {
+            // fetch from the database the class name
         }
     }
 }
