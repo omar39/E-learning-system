@@ -44,7 +44,7 @@
             // register_btn
             // 
             this.register_btn.Location = new System.Drawing.Point(246, 301);
-            this.register_btn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.register_btn.Margin = new System.Windows.Forms.Padding(2);
             this.register_btn.Name = "register_btn";
             this.register_btn.Size = new System.Drawing.Size(116, 54);
             this.register_btn.TabIndex = 6;
@@ -55,7 +55,7 @@
             // fullName_txt
             // 
             this.fullName_txt.Location = new System.Drawing.Point(303, 41);
-            this.fullName_txt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.fullName_txt.Margin = new System.Windows.Forms.Padding(2);
             this.fullName_txt.Name = "fullName_txt";
             this.fullName_txt.Size = new System.Drawing.Size(130, 20);
             this.fullName_txt.TabIndex = 1;
@@ -63,7 +63,7 @@
             // username_txt
             // 
             this.username_txt.Location = new System.Drawing.Point(303, 72);
-            this.username_txt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.username_txt.Margin = new System.Windows.Forms.Padding(2);
             this.username_txt.Name = "username_txt";
             this.username_txt.Size = new System.Drawing.Size(130, 20);
             this.username_txt.TabIndex = 2;
@@ -71,7 +71,7 @@
             // password_txt
             // 
             this.password_txt.Location = new System.Drawing.Point(303, 102);
-            this.password_txt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.password_txt.Margin = new System.Windows.Forms.Padding(2);
             this.password_txt.Name = "password_txt";
             this.password_txt.PasswordChar = '*';
             this.password_txt.Size = new System.Drawing.Size(130, 20);
@@ -83,7 +83,7 @@
             this.label1.Location = new System.Drawing.Point(222, 44);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(54, 13);
+            this.label1.Size = new System.Drawing.Size(53, 13);
             this.label1.TabIndex = 25;
             this.label1.Text = "Full Name";
             // 
@@ -124,7 +124,7 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(222, 193);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(52, 13);
+            this.label5.Size = new System.Drawing.Size(54, 13);
             this.label5.TabIndex = 27;
             this.label5.Text = "User type";
             // 
@@ -160,9 +160,10 @@
             this.Controls.Add(this.username_txt);
             this.Controls.Add(this.fullName_txt);
             this.Controls.Add(this.register_btn);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "registeration";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.registeration_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

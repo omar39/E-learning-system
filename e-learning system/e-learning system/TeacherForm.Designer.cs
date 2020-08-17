@@ -35,13 +35,13 @@
             this.classesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
             this.manageClassGroup = new System.Windows.Forms.GroupBox();
+            this.search_btn = new System.Windows.Forms.Button();
+            this.searchResultsList = new System.Windows.Forms.ListBox();
+            this.join_btn = new System.Windows.Forms.Button();
+            this.searchBar = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.MyClassesGroup = new System.Windows.Forms.GroupBox();
             this.chatView = new System.Windows.Forms.ListView();
-            this.label1 = new System.Windows.Forms.Label();
-            this.searchBar = new System.Windows.Forms.TextBox();
-            this.join_btn = new System.Windows.Forms.Button();
-            this.searchResultsList = new System.Windows.Forms.ListBox();
-            this.search_btn = new System.Windows.Forms.Button();
             this.menuStrip.SuspendLayout();
             this.manageClassGroup.SuspendLayout();
             this.MyClassesGroup.SuspendLayout();
@@ -111,6 +111,52 @@
             this.manageClassGroup.TabStop = false;
             this.manageClassGroup.Text = "Manage classes";
             // 
+            // search_btn
+            // 
+            this.search_btn.Location = new System.Drawing.Point(21, 93);
+            this.search_btn.Name = "search_btn";
+            this.search_btn.Size = new System.Drawing.Size(75, 23);
+            this.search_btn.TabIndex = 5;
+            this.search_btn.Text = "Search";
+            this.search_btn.UseVisualStyleBackColor = true;
+            this.search_btn.Click += new System.EventHandler(this.search_btn_Click);
+            // 
+            // searchResultsList
+            // 
+            this.searchResultsList.FormattingEnabled = true;
+            this.searchResultsList.Location = new System.Drawing.Point(21, 142);
+            this.searchResultsList.Name = "searchResultsList";
+            this.searchResultsList.Size = new System.Drawing.Size(193, 95);
+            this.searchResultsList.TabIndex = 4;
+            this.searchResultsList.SelectedIndexChanged += new System.EventHandler(this.searchResultsList_SelectedIndexChanged);
+            // 
+            // join_btn
+            // 
+            this.join_btn.Location = new System.Drawing.Point(139, 259);
+            this.join_btn.Name = "join_btn";
+            this.join_btn.Size = new System.Drawing.Size(75, 23);
+            this.join_btn.TabIndex = 3;
+            this.join_btn.Text = "Join";
+            this.join_btn.UseVisualStyleBackColor = true;
+            this.join_btn.Visible = false;
+            this.join_btn.Click += new System.EventHandler(this.join_btn_Click);
+            // 
+            // searchBar
+            // 
+            this.searchBar.Location = new System.Drawing.Point(100, 52);
+            this.searchBar.Name = "searchBar";
+            this.searchBar.Size = new System.Drawing.Size(114, 20);
+            this.searchBar.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(18, 52);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(61, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Join a class";
+            // 
             // MyClassesGroup
             // 
             this.MyClassesGroup.Controls.Add(this.chatView);
@@ -133,52 +179,6 @@
             this.chatView.UseCompatibleStateImageBehavior = false;
             this.chatView.View = System.Windows.Forms.View.Tile;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(18, 52);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(62, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Join a class";
-            // 
-            // searchBar
-            // 
-            this.searchBar.Location = new System.Drawing.Point(100, 52);
-            this.searchBar.Name = "searchBar";
-            this.searchBar.Size = new System.Drawing.Size(114, 20);
-            this.searchBar.TabIndex = 1;
-            // 
-            // join_btn
-            // 
-            this.join_btn.Location = new System.Drawing.Point(139, 259);
-            this.join_btn.Name = "join_btn";
-            this.join_btn.Size = new System.Drawing.Size(75, 23);
-            this.join_btn.TabIndex = 3;
-            this.join_btn.Text = "Join";
-            this.join_btn.UseVisualStyleBackColor = true;
-            this.join_btn.Visible = false;
-            this.join_btn.Click += new System.EventHandler(this.join_btn_Click);
-            // 
-            // searchResultsList
-            // 
-            this.searchResultsList.FormattingEnabled = true;
-            this.searchResultsList.Location = new System.Drawing.Point(21, 142);
-            this.searchResultsList.Name = "searchResultsList";
-            this.searchResultsList.Size = new System.Drawing.Size(193, 95);
-            this.searchResultsList.TabIndex = 4;
-            this.searchResultsList.SelectedIndexChanged += new System.EventHandler(this.searchResultsList_SelectedIndexChanged);
-            // 
-            // search_btn
-            // 
-            this.search_btn.Location = new System.Drawing.Point(21, 93);
-            this.search_btn.Name = "search_btn";
-            this.search_btn.Size = new System.Drawing.Size(75, 23);
-            this.search_btn.TabIndex = 5;
-            this.search_btn.Text = "Search";
-            this.search_btn.UseVisualStyleBackColor = true;
-            this.search_btn.Click += new System.EventHandler(this.search_btn_Click);
-            // 
             // TeacherForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -190,6 +190,7 @@
             this.MainMenuStrip = this.menuStrip;
             this.Name = "TeacherForm";
             this.Text = "TeacherForm";
+            this.Load += new System.EventHandler(this.TeacherForm_Load);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
             this.manageClassGroup.ResumeLayout(false);

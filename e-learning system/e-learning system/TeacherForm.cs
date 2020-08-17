@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using MySql.Data.MySqlClient;
 namespace e_learning_system
 {
     public partial class TeacherForm : Form
@@ -51,6 +51,11 @@ namespace e_learning_system
         private void search_btn_Click(object sender, EventArgs e)
         {
             // fetch from the database the class name
+        }
+
+        private void TeacherForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
