@@ -21,9 +21,22 @@ namespace e_learning_system
 
         private void post_btn_Click(object sender, EventArgs e)
         {
+            string query = "select MAX(post_id) AS maxpost from posts";
+            MySqlCommand cmd = new MySqlCommand(query, Program.conn);
+            MySqlDataReader reader = cmd.ExecuteReader();
+            string user_id = "-1";
+
+            while (reader.Read())
+            {
+                user_id = reader.GetString(0);
+                int id = Int16.Parse(user_id);
+                id++;
+                user_id = id.ToString();
+            }
+            reader.Close();
             posts_view.Items.Add(postEditor.Text);
-            string query = "insert into posts " +
-                            "values('5','" + id + "','" + postEditor.Text.ToString() + "','"+ classes_strip.SelectedItem.ToString() + "')";
+            query = "insert into posts " +
+                            "values('"+user_id+"','" + id + "','" + postEditor.Text.ToString() + "','"+ classes_strip.SelectedItem.ToString() + "')";
             MySqlCommand commandDatabase = new MySqlCommand(query, Program.conn);
             commandDatabase.ExecuteNonQuery();
             postEditor.Clear();

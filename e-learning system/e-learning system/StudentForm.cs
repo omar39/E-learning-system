@@ -138,7 +138,7 @@ namespace e_learning_system
 
         private void register_class_btn_Click(object sender, EventArgs e)
         {
-            string query = "insert into students_classes('student_id','class_id') "+
+            string query = "insert into students_classes "+
                             "values('" + id + "','" + other_cmb.SelectedItem.ToString() + "')";
             MySqlCommand commandDatabase = new MySqlCommand(query, Program.conn);
             commandDatabase.ExecuteNonQuery();
