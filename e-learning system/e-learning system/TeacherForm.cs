@@ -36,7 +36,7 @@ namespace e_learning_system
             reader.Close();
             posts_view.Items.Add(postEditor.Text);
             query = "insert into posts " +
-                            "values('"+user_id+"','" + id + "','" + postEditor.Text.ToString() + "','"+ classes_strip.SelectedItem.ToString() + "')";
+                            "values('" + user_id + "','" + id + "','" + postEditor.Text.ToString() + "','" + classes_strip.SelectedItem.ToString() + "')";
             MySqlCommand commandDatabase = new MySqlCommand(query, Program.conn);
             commandDatabase.ExecuteNonQuery();
             postEditor.Clear();
@@ -46,9 +46,9 @@ namespace e_learning_system
 
         private void toolStripComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string query = "SELECT post_content FROM posts "+
-                           "where teacher_id = '" + id.ToString() + "' "+
-                           "and class_id = '"+classes_strip.SelectedItem.ToString() +"'";
+            string query = "SELECT post_content FROM posts " +
+                           "where teacher_id = '" + id.ToString() + "' " +
+                           "and class_id = '" + classes_strip.SelectedItem.ToString() + "'";
             MySqlCommand commandDatabase = new MySqlCommand(query, Program.conn);
             //commandDatabase.CommandTimeout = 60;
             MySqlDataReader reader;
@@ -99,6 +99,31 @@ namespace e_learning_system
             {
                 MessageBox.Show(ex.Message + "99");
             }
+            query = "select subjectName from classrooms where class_id = '" + classes_strip.SelectedItem.ToString() + "'";
+            commandDatabase = new MySqlCommand(query, Program.conn);
+            try
+            {
+                reader = commandDatabase.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        subject_lbl.Text = reader.GetString(0);
+                        subject_lbl.Visible = true;
+                    }
+
+                }
+                else
+                {
+                    Console.WriteLine("No rows found.");
+                }
+
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + "111");
+            }
 
         }
 
@@ -113,9 +138,9 @@ namespace e_learning_system
 
         private void TeacherForm_Load(object sender, EventArgs e)
         {
+
             string query = "SELECT class_id FROM class_teachers where teacher_id = '" + id.ToString() + "'";
             MySqlCommand commandDatabase = new MySqlCommand(query, Program.conn);
-            //commandDatabase.CommandTimeout = 60;
             MySqlDataReader reader;
             try
             {
@@ -165,7 +190,7 @@ namespace e_learning_system
                     other_cmb.Items.Remove(classes_strip.Items[i]);
                 }
             }
-    
+
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message + "7");
@@ -185,15 +210,61 @@ namespace e_learning_system
             MySqlCommand commandDatabase = new MySqlCommand(query, Program.conn);
             try
             {
-            commandDatabase.ExecuteNonQuery();
+                commandDatabase.ExecuteNonQuery();
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
 
             }
             classes_strip.Items.Add(other_cmb.SelectedItem);
             other_cmb.Items.Remove(other_cmb.SelectedItem);
+        }
+
+        private void students_cmb_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string current_class = classes_strip.SelectedItem.ToString();
+            string current_subject = subject_lbl.Text.ToString();
+            string selected_student_id = students_cmb.SelectedItem.ToString();
+
+            string query = "select grade from student_subjects " +
+                    "where student_id = '" + selected_student_id + "' " +
+                    "and subjectName = '" + current_subject + "'";
+            MySqlCommand commandDatabase = new MySqlCommand(query, Program.conn);
+            MySqlDataReader reader;
+            try
+            {
+                reader = commandDatabase.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        grade_box.Text = reader.GetString(0);
+                    }
+
+                }
+                else
+                {
+                    Console.WriteLine("No rows found.");
+                }
+
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + "1");
+            }
+        }
+
+        private void update_grade_btn_Click(object sender, EventArgs e)
+        {
+            string new_grade = grade_box.Text.ToString();
+            string query = "update student_subjects " +
+                           "set grade = '" + new_grade + "'" +
+                           "where student_id = '" + students_cmb.SelectedItem.ToString() + "' " +
+                           "and subjectName = '" + subject_lbl.Text.ToString() + "' ";
+            MySqlCommand command = new MySqlCommand(query, Program.conn);
+            command.ExecuteNonQuery();
         }
     }
 }

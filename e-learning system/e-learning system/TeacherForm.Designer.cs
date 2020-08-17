@@ -40,11 +40,13 @@
             this.other_cmb = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.update_grade_btn = new System.Windows.Forms.Button();
             this.students_cmb = new System.Windows.Forms.ComboBox();
             this.grade_box = new System.Windows.Forms.TextBox();
             this.MyClassesGroup = new System.Windows.Forms.GroupBox();
             this.posts_view = new System.Windows.Forms.ListView();
+            this.label4 = new System.Windows.Forms.Label();
+            this.subject_lbl = new System.Windows.Forms.Label();
             this.menuStrip.SuspendLayout();
             this.manageClassGroup.SuspendLayout();
             this.MyClassesGroup.SuspendLayout();
@@ -110,7 +112,7 @@
             this.manageClassGroup.Controls.Add(this.other_cmb);
             this.manageClassGroup.Controls.Add(this.label2);
             this.manageClassGroup.Controls.Add(this.label1);
-            this.manageClassGroup.Controls.Add(this.button1);
+            this.manageClassGroup.Controls.Add(this.update_grade_btn);
             this.manageClassGroup.Controls.Add(this.students_cmb);
             this.manageClassGroup.Controls.Add(this.grade_box);
             this.manageClassGroup.Location = new System.Drawing.Point(592, 62);
@@ -167,14 +169,15 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "Class students";
             // 
-            // button1
+            // update_grade_btn
             // 
-            this.button1.Location = new System.Drawing.Point(258, 98);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(106, 32);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Update grade";
-            this.button1.UseVisualStyleBackColor = true;
+            this.update_grade_btn.Location = new System.Drawing.Point(258, 98);
+            this.update_grade_btn.Name = "update_grade_btn";
+            this.update_grade_btn.Size = new System.Drawing.Size(106, 32);
+            this.update_grade_btn.TabIndex = 2;
+            this.update_grade_btn.Text = "Update grade";
+            this.update_grade_btn.UseVisualStyleBackColor = true;
+            this.update_grade_btn.Click += new System.EventHandler(this.update_grade_btn_Click);
             // 
             // students_cmb
             // 
@@ -183,6 +186,7 @@
             this.students_cmb.Name = "students_cmb";
             this.students_cmb.Size = new System.Drawing.Size(121, 24);
             this.students_cmb.TabIndex = 1;
+            this.students_cmb.SelectedIndexChanged += new System.EventHandler(this.students_cmb_SelectedIndexChanged);
             // 
             // grade_box
             // 
@@ -216,11 +220,32 @@
             this.posts_view.UseCompatibleStateImageBehavior = false;
             this.posts_view.View = System.Windows.Forms.View.Tile;
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(366, 38);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(59, 17);
+            this.label4.TabIndex = 5;
+            this.label4.Text = "Subject:";
+            // 
+            // subject_lbl
+            // 
+            this.subject_lbl.AutoSize = true;
+            this.subject_lbl.Location = new System.Drawing.Point(457, 38);
+            this.subject_lbl.Name = "subject_lbl";
+            this.subject_lbl.Size = new System.Drawing.Size(39, 17);
+            this.subject_lbl.TabIndex = 6;
+            this.subject_lbl.Text = "temp";
+            this.subject_lbl.Visible = false;
+            // 
             // TeacherForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1067, 554);
+            this.Controls.Add(this.subject_lbl);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.MyClassesGroup);
             this.Controls.Add(this.manageClassGroup);
             this.Controls.Add(this.menuStrip);
@@ -257,8 +282,10 @@
         private System.Windows.Forms.ComboBox other_cmb;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button update_grade_btn;
         private System.Windows.Forms.ComboBox students_cmb;
         private System.Windows.Forms.TextBox grade_box;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label subject_lbl;
     }
 }
