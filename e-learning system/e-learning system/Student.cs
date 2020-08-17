@@ -26,27 +26,21 @@ namespace e_learning_system
             :base(name ,phoneNumber)
         {
         }
-        public bool registerToClass(Classroom class1)
+        public void registerToClass(Classroom class1)
         {
-            if (class1.calculateCapacity() > 0)
-            {
                 class1.addStudent(this);
                 this.studentClasses.Add(class1);
                 this.grades.Add(0);
                 this.subjects.Add(class1.getSubject());
-                return true;
-            }
-            else return false;
+            
 
         }
         public List<Classroom> GetClassrooms()
         {
             return this.studentClasses;
         }
-        public bool changeClassRoom(Classroom class1)
+        public void changeClassRoom(Classroom class1)
         {
-            if (class1.calculateCapacity() > 0)
-            {
                 for(int x=0;x<studentClasses.Count;x++ )
                 {
                     if(studentClasses[x].getSubject() == class1.getSubject())
@@ -58,9 +52,7 @@ namespace e_learning_system
                 
                 class1.addStudent(this);
                 studentClasses.Add(class1);
-                return true;
-            }
-            else return false;
+
         }
         public double calculateGrade()
         {
@@ -73,7 +65,7 @@ namespace e_learning_system
             double final_grade = sum_of_grades / num_of_subjects;
             return final_grade;
         }
-      
+        
         public void set_grade(string subjectName , double grade)
         {
 
@@ -83,6 +75,23 @@ namespace e_learning_system
                 {
                     this.grades[x] = grade;
                     
+                }
+            }
+        }
+        public void set_subjects(string subjectName, double grade , string description)
+        {
+            Subject subject = new Subject(subjectName, grade, description);
+            subjects.Add(subject);
+        }
+        public void set_classrooms(string subjectName, double grade)
+        {
+
+            for (int x = 0; x < this.grades.Count; x++)
+            {
+                if (this.subjects[x].getName().Equals(subjectName))
+                {
+                    this.grades[x] = grade;
+
                 }
             }
         }

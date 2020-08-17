@@ -15,9 +15,10 @@ namespace e_learning_system
         {
             return this.description;
         }
-        public Subject(string name, string description)
+        public Subject(string name,double grade ,string description)
         {
             this.name = name;
+            this.grade = grade;
             this.description = description;
         }
     }
