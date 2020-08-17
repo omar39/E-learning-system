@@ -35,6 +35,7 @@ namespace e_learning_system
                     {
                         classes_cmb.Items.Add(reader.GetString(0));
                     }
+                    reader.Close();
                 }
                 else
                 {
@@ -57,6 +58,8 @@ namespace e_learning_system
                     {
                         other_cmb.Items.Add(reader.GetString(0));
                     }
+                    reader.Close();
+
                 }
                 else
                 {
@@ -81,6 +84,8 @@ namespace e_learning_system
                     {
                         student.set_subjects(reader.GetString(0), reader.GetDouble(1), reader.GetString(2));
                     }
+                    reader.Close();
+
                 }
                 else
                 {
@@ -108,6 +113,8 @@ namespace e_learning_system
                     {
                         student.set_grade(reader.GetString(1), reader.GetDouble(0));
                     }
+                    reader.Close();
+
                 }
                 else
                 {
@@ -141,6 +148,8 @@ namespace e_learning_system
                         student.set_subjects(reader.GetString(0), reader.GetDouble(1), reader.GetString(2));
                         student.set_grade(reader.GetString(0), 0);
                     }
+                    reader.Close();
+
                 }
                 else
                 {
@@ -174,6 +183,8 @@ namespace e_learning_system
                         label_subject.Text = reader.GetString(0);
                         label_subject.Visible = true;
                     }
+                    reader.Close();
+
                 }
                 else
                 {
@@ -197,6 +208,8 @@ namespace e_learning_system
                     {
                         student_post_tb.Items.Add(reader.GetString(0));
                     }
+                    reader.Close();
+
                 }
                 else
                 {
