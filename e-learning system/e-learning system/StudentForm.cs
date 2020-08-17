@@ -13,7 +13,7 @@ namespace e_learning_system
     public partial class StudentForm : Form
     {
         Student student = new Student();
-        int id=0;
+        int id=10;
         
         public StudentForm()
         {
@@ -22,9 +22,9 @@ namespace e_learning_system
 
         private void StudentForm_Load(object sender, EventArgs e)
         {
-            string query = "SELECT class_id FROM student_classes where student_id = '" + id.ToString() + "'";
+            string query = "SELECT class_id FROM students_classes where student_id = '" + id.ToString() + "'";
             MySqlCommand commandDatabase = new MySqlCommand(query, Program.conn);
-            commandDatabase.CommandTimeout = 60;
+            //commandDatabase.CommandTimeout = 60;
             MySqlDataReader reader;
             try
             {
@@ -35,20 +35,23 @@ namespace e_learning_system
                     {
                         classes_cmb.Items.Add(reader.GetString(0));
                     }
-                    reader.Close();
+                    
                 }
                 else
                 {
                     Console.WriteLine("No rows found.");
                 }
+
+                reader.Close();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-            query = "SELECT class_id FROM student_classes where student_id != '" + id.ToString() + "'";
+            
+            query = "SELECT class_id FROM students_classes where student_id != '" + id.ToString() + "'";
             commandDatabase = new MySqlCommand(query, Program.conn);
-            commandDatabase.CommandTimeout = 60;
+            //commandDatabase.CommandTimeout = 60;
             try
             {
                 reader = commandDatabase.ExecuteReader();
@@ -58,23 +61,22 @@ namespace e_learning_system
                     {
                         other_cmb.Items.Add(reader.GetString(0));
                     }
-                    reader.Close();
+                   
 
                 }
                 else
                 {
                     Console.WriteLine("No rows found.");
                 }
+                reader.Close();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-            query = "SELECT subjectName,grade,subject_description"+
-                    "FROM student_subjects c, subjects "+
-                    "where student_id != '" + id.ToString() + "' and c.subjectName = subjects.subjectName";
+            query = "SELECT c.subjectName,c.grade,c.subject_description FROM student_subjects AS a, subjects AS c where a.subjectName = c.subjectName and a.student_id <>'" + id.ToString() + "'";
             commandDatabase = new MySqlCommand(query, Program.conn);
-            commandDatabase.CommandTimeout = 60;
+           // commandDatabase.CommandTimeout = 60;
             try
             {
                 reader = commandDatabase.ExecuteReader();
@@ -84,13 +86,14 @@ namespace e_learning_system
                     {
                         student.set_subjects(reader.GetString(0), reader.GetDouble(1), reader.GetString(2));
                     }
-                    reader.Close();
+                   
 
                 }
                 else
                 {
                     Console.WriteLine("No rows found.");
                 }
+                reader.Close();
             }
             catch (Exception ex)
             {
@@ -113,7 +116,6 @@ namespace e_learning_system
                     {
                         student.set_grade(reader.GetString(1), reader.GetDouble(0));
                     }
-                    reader.Close();
 
                 }
                 else
@@ -121,6 +123,7 @@ namespace e_learning_system
                     Console.WriteLine("No rows found.");
                 }
                 gpa_tb.Text = Convert.ToString(student.calculateGrade());
+                    reader.Close();
             }
             catch(Exception ex)
             {
@@ -169,8 +172,8 @@ namespace e_learning_system
             label_id.Text = classes_cmb.SelectedItem.ToString();
             label_id.Visible = true;
             string query = "SELECT subjectName " +
-                           "FROM classrooms c " +
-                           "where c.classid = '" + classes_cmb.SelectedItem.ToString() + "'";
+                           "FROM classrooms AS c " +
+                           "where c.class_id = '" + classes_cmb.SelectedItem.ToString() + "'";
             MySqlCommand commandDatabase = new MySqlCommand(query, Program.conn);
             MySqlDataReader reader;
             try
@@ -183,21 +186,21 @@ namespace e_learning_system
                         label_subject.Text = reader.GetString(0);
                         label_subject.Visible = true;
                     }
-                    reader.Close();
 
                 }
                 else
                 {
                     Console.WriteLine("No rows found.");
                 }
+                    reader.Close();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
             query = "SELECT post_content " +
-                    "FROM posts a " +
-                    "where a.classid = '" + classes_cmb.SelectedItem.ToString() + "'";
+                    "FROM posts AS a " +
+                    "where a.class_id = '" + classes_cmb.SelectedItem.ToString() + "'";
             commandDatabase = new MySqlCommand(query, Program.conn);
             try
             {
@@ -208,13 +211,13 @@ namespace e_learning_system
                     {
                         student_post_tb.Items.Add(reader.GetString(0));
                     }
-                    reader.Close();
 
                 }
                 else
                 {
                     Console.WriteLine("No rows found.");
                 }
+                    reader.Close();
             }
             catch (Exception ex)
             {
