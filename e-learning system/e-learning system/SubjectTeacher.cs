@@ -13,7 +13,10 @@ namespace e_learning_system
             this.subject = subject;
             _teacher = teacher;
         }
-
+        public Subject GetSubject()
+        {
+            return subject;
+        }
         public  string getDescription()
         {
             return _teacher.getDescription() + "teaches " + subject.getName();
