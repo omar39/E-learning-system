@@ -1,15 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace e_learning_system
 {
     class Student : User
     {
         List<Classroom> studentClasses = new List<Classroom>();
-        List<Tuple<Subject, double>> grades = new List<Tuple<Subject, double>>();
+        List<double> grades = new List<double>();
+        List<Subject> subjects = new List<Subject>();
+        
+
         List<string> comments = new List<string>();
         public override bool signIn()
         {
@@ -19,7 +25,6 @@ namespace e_learning_system
         public Student(string name, string phoneNumber)
             :base(name ,phoneNumber)
         {
-
         }
         public bool registerToClass(Classroom class1)
         {
@@ -27,7 +32,8 @@ namespace e_learning_system
             {
                 class1.addStudent(this);
                 this.studentClasses.Add(class1);
-                this.grades.Add(new Tuple<Subject, double>(class1.getSubject(), 0));
+                this.grades.Add(0);
+                this.subjects.Add(class1.getSubject());
                 return true;
             }
             else return false;
@@ -60,12 +66,25 @@ namespace e_learning_system
         {
             int num_of_subjects = this.grades.Count;
             double sum_of_grades = 0;
-            foreach(Tuple<Subject,double> x in grades)
+            foreach(double x in grades)
             {
-                sum_of_grades += x.Item2;
+                sum_of_grades += x;
             }
             double final_grade = sum_of_grades / num_of_subjects;
             return final_grade;
+        }
+      
+        public void set_grade(string subjectName , double grade)
+        {
+
+            for (int x = 0; x < this.grades.Count; x++)
+            {
+                if (this.subjects[x].getName().Equals(subjectName))
+                {
+                    this.grades[x] = grade;
+                    
+                }
+            }
         }
 
         public void addComment(string comment)

@@ -4,9 +4,9 @@ namespace e_learning_system
 {
     class Subject
     {
-        private double grade;
-        private string name;
-        private string description;
+        private double grade { set { grade = value; } get { return grade; } }
+        private string name { set { name = value; } get { return name; } }
+        private string description { set { description = value; } get { return description; } }
         public string getName()
         {
             return this.name;
