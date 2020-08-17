@@ -12,18 +12,21 @@ namespace e_learning_system
 {
     public partial class StudentForm : Form
     {
-        Student student = new Student();
-        int id=10;
+        Student student;
+        Classroom classroom;
+        Subject subject;
+        int _id=10;
         
-        public StudentForm()
+        public StudentForm(int id)
         {
             InitializeComponent();
+            _id = id;
         }
 
         private void StudentForm_Load(object sender, EventArgs e)
         {
-
-            string query = "SELECT class_id FROM students_classes where student_id = '" + id.ToString() + "'";
+            student = new Student();
+            string query = "SELECT class_id FROM students_classes where student_id = '" + _id.ToString() + "'";
             MySqlCommand commandDatabase = new MySqlCommand(query, Program.conn);
             //commandDatabase.CommandTimeout = 60;
             MySqlDataReader reader;
@@ -34,7 +37,7 @@ namespace e_learning_system
                 {
                     while (reader.Read())
                     {
-                        classes_cmb.Items.Add(reader.GetString(0));
+                      
                     }
                     
                 }
@@ -80,7 +83,7 @@ namespace e_learning_system
             {
                 MessageBox.Show(ex.Message+"2");
             }
-            query = "SELECT c.subjectName,c.grade,c.subject_description FROM student_subjects AS a, subjects AS c where a.subjectName = c.subjectName and a.student_id <>'" + id.ToString() + "'";
+            query = "SELECT c.subjectName,c.grade,c.subject_description FROM student_subjects AS a, subjects AS c where a.subjectName = c.subjectName and a.student_id <>'" + _id.ToString() + "'";
             commandDatabase = new MySqlCommand(query, Program.conn);
            // commandDatabase.CommandTimeout = 60;
             try
@@ -109,10 +112,11 @@ namespace e_learning_system
 
         private void calc_gpa_btn_Click(object sender, EventArgs e)
         {
-            string query = "SELECT grade,subjectName FROM student_subjects where student_id = '"+id.ToString()+"'";
+            string query = "SELECT grade,subjectName FROM student_subjects where student_id = '"+_id.ToString()+"'";
             MySqlCommand commandDatabase = new MySqlCommand(query, Program.conn);
             commandDatabase.CommandTimeout = 60;
             MySqlDataReader reader;
+            double grade = 0;
             try
             {
                 reader = commandDatabase.ExecuteReader();
@@ -121,6 +125,7 @@ namespace e_learning_system
                     while (reader.Read())
                     {
                         student.set_grade(reader.GetString(1), reader.GetDouble(0));
+                        grade += reader.GetDouble(0);
                     }
 
                 }
@@ -128,7 +133,7 @@ namespace e_learning_system
                 {
                     Console.WriteLine("No rows found.");
                 }
-                gpa_tb.Text = Convert.ToString(student.calculateGrade());
+                gpa_tb.Text = Convert.ToString(grade);
                     reader.Close();
             }
             catch(Exception ex)
@@ -141,7 +146,7 @@ namespace e_learning_system
         {
             string new_subject = "";
             string query = "insert into students_classes "+
-                            "values('" + id + "','" + other_cmb.SelectedItem.ToString() + "')";
+                            "values('" + _id + "','" + other_cmb.SelectedItem.ToString() + "')";
             MySqlCommand commandDatabase = new MySqlCommand(query, Program.conn);
             try
             {
@@ -183,7 +188,7 @@ namespace e_learning_system
             other_cmb.Items.Remove(other_cmb.SelectedItem);
 
             int x = 0;
-            query = "insert into student_subjects values ('" + id + "','" + new_subject + "', 0)";
+            query = "insert into student_subjects values ('" + _id + "','" + new_subject + "', 0)";
             commandDatabase = new MySqlCommand(query, Program.conn);
 
             commandDatabase.ExecuteNonQuery();
@@ -197,7 +202,7 @@ namespace e_learning_system
         {
             label_id.Text = classes_cmb.SelectedItem.ToString();
             label_id.Visible = true;
-            string query = "SELECT subjectName " +
+            string query = "SELECT subjectName, grade " +
                            "FROM classrooms AS c " +
                            "where c.class_id = '" + classes_cmb.SelectedItem.ToString() + "'";
             MySqlCommand commandDatabase = new MySqlCommand(query, Program.conn);
@@ -212,7 +217,7 @@ namespace e_learning_system
                         label_subject.Text = reader.GetString(0);
                         label_subject.Visible = true;
                     }
-
+        
                 }
                 else
                 {
@@ -224,6 +229,7 @@ namespace e_learning_system
             {
                 MessageBox.Show(ex.Message);
             }
+           
             query = "SELECT post_content " +
                     "FROM posts AS a " +
                     "where a.class_id = '" + classes_cmb.SelectedItem.ToString() + "'";

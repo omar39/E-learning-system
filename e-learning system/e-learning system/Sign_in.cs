@@ -34,8 +34,6 @@ namespace e_learning_system
 
         private void signIn_btn_Click(object sender, EventArgs e)
         {
-            UserFactory user_init=new UserFactory();
-            newuser = null;
             string query = "select user_password, user_id, phoneNumber from users where user_name='"+username_txt.Text+"'";
             MySqlCommand cmd = new MySqlCommand(query, Program.conn);
             MySqlDataReader reader = cmd.ExecuteReader();
@@ -67,7 +65,7 @@ namespace e_learning_system
             {
                 newuser = UserFactory.make_user("student", username_txt.Text, user_phone, Int16.Parse(user_id));
                 MessageBox.Show("Student");
-                StudentForm f = new StudentForm();
+                StudentForm f = new StudentForm(Int16.Parse(user_id));
                 reader.Close();
                 f.Show();
                 this.Hide();

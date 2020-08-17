@@ -8,11 +8,11 @@ namespace e_learning_system
         private Subject subject;
         private List<Student> students = new List<Student>();
         // hena el teachers variable
-        public Classroom(int id1 , Subject subj , List<Student> students1)
+        public Classroom(int id1 , Subject subj)
         {
             this.id = id1;
             this.subject = subj;
-            this.students = students1;
+            //this.students = students1;
         }
 
         public Subject getSubject()
