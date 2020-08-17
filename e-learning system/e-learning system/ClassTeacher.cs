@@ -21,7 +21,9 @@ namespace e_learning_system
         {
             return classroom;
         }
-
+        public void set_class(Classroom classs){
+            this.classroom = classs;
+        }
     }
 
 }
