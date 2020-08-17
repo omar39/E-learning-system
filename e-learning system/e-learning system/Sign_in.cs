@@ -33,18 +33,72 @@ namespace e_learning_system
 
         private void signIn_btn_Click(object sender, EventArgs e)
         {
-            string query = "select user_password from users where user_name='"+username_txt.Text+"'";
+            UserFactory user_init=new UserFactory();
+            User newuser = null;
+
+            string query = "select user_password, user_id, phoneNumber from users where user_name='"+username_txt.Text+"'";
             MySqlCommand cmd = new MySqlCommand(query, Program.conn);
             MySqlDataReader reader = cmd.ExecuteReader();
+            string user_id="-1";
+            string user_phone = "-1";
            // MessageBox.Show("Login success");
             while (reader.Read())
             {
                 if (reader.GetString(0) == password_txt.Text)
+                {
+                    user_id = reader.GetString(1);
+                    user_phone = reader.GetString(2);
                     MessageBox.Show("Login success");
+
+                }
                 else
+                {
                     MessageBox.Show("Login faild");
+                    reader.Close();
+                    return;
+                }
             }
             reader.Close();
+           
+            query = "select user_id from students where user_id='" + user_id + "'";
+            cmd = new MySqlCommand(query, Program.conn);
+            reader = cmd.ExecuteReader();
+            if (reader.HasRows)
+            {
+                newuser = UserFactory.make_user("student", username_txt.Text, user_phone);
+                MessageBox.Show("Student");
+                StudentForm f = new StudentForm();
+                f.Show();
+                return;
+            }
+            reader.Close();
+
+            query = "select user_id from sys_admin where user_id='" + user_id + "'";
+            cmd = new MySqlCommand(query, Program.conn);
+            reader = cmd.ExecuteReader();
+            if (reader.HasRows)
+            {
+                newuser = UserFactory.make_user("admin", username_txt.Text, user_phone);
+                MessageBox.Show("Admin");
+                AdminForm f = new AdminForm();
+                f.Show();
+                return;
+            }
+            reader.Close();
+
+            query = "select user_id from teachers where user_id='" + user_id + "'";
+            cmd = new MySqlCommand(query, Program.conn);
+            reader = cmd.ExecuteReader();
+            if (reader.HasRows)
+            {
+                newuser = UserFactory.make_user("teacher", username_txt.Text, user_phone);
+                MessageBox.Show("Teacher");
+                TeacherForm f = new TeacherForm();
+                f.Show();
+                return;
+            }
+            reader.Close();
+
         }
     }
 }

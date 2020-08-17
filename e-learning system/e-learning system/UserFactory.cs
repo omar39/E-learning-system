@@ -11,11 +11,11 @@ namespace e_learning_system
         public static User make_user(string type, string name, string phoneNumber)
         {
 
-            if (type == "Teacher")
+            if (type == "teacher")
                 return new Teacher(name, phoneNumber);
-            else if (type == "Student")
+            else if (type == "student")
                 return new Student(name, phoneNumber);
-            else if (type == "Admin")
+            else if (type == "admin")
                 return Admin.getInstance(name, phoneNumber);
             else return null;
      
