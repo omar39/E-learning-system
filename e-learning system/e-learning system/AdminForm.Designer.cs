@@ -46,7 +46,7 @@
             this.pendingRequestsLabel.AutoSize = true;
             this.pendingRequestsLabel.Location = new System.Drawing.Point(55, 104);
             this.pendingRequestsLabel.Name = "pendingRequestsLabel";
-            this.pendingRequestsLabel.Size = new System.Drawing.Size(89, 13);
+            this.pendingRequestsLabel.Size = new System.Drawing.Size(90, 13);
             this.pendingRequestsLabel.TabIndex = 0;
             this.pendingRequestsLabel.Text = "Pending requests";
             // 
@@ -84,7 +84,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(591, 90);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(61, 13);
+            this.label1.Size = new System.Drawing.Size(62, 13);
             this.label1.TabIndex = 4;
             this.label1.Text = "Delete user";
             // 
@@ -93,7 +93,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(461, 133);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(108, 13);
+            this.label2.Size = new System.Drawing.Size(110, 13);
             this.label2.TabIndex = 5;
             this.label2.Text = "Search for user name";
             // 
@@ -151,6 +151,7 @@
             this.Controls.Add(this.pendingRequestsLabel);
             this.Name = "AdminForm";
             this.Text = "Admin";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.AdminForm_FormClosed);
             this.Load += new System.EventHandler(this.AdminForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

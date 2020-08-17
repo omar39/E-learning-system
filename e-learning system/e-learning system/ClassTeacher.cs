@@ -15,7 +15,7 @@ namespace e_learning_system
         }
         public string getDescription()
         {
-            return _teacher.getDescription() + "supervises class " + classroom.getName();
+            return _teacher.getDescription() + "supervises class " + classroom.get_id();
         }
         public Classroom getClassroom()
         {

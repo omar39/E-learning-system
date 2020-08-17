@@ -57,5 +57,10 @@ namespace e_learning_system
         {
 
         }
+
+        private void TeacherForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

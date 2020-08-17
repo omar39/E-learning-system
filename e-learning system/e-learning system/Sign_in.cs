@@ -49,7 +49,7 @@ namespace e_learning_system
                     user_id = reader.GetString(1);
                     user_phone = reader.GetString(2);
                     MessageBox.Show("Login success");
-
+                   // break;
                 }
                 else
                 {
@@ -69,6 +69,7 @@ namespace e_learning_system
                 MessageBox.Show("Student");
                 StudentForm f = new StudentForm();
                 f.Show();
+                this.Hide();
                 return;
             }
             reader.Close();
@@ -82,6 +83,7 @@ namespace e_learning_system
                 MessageBox.Show("Admin");
                 AdminForm f = new AdminForm();
                 f.Show();
+                this.Hide();
                 return;
             }
             reader.Close();
@@ -95,10 +97,16 @@ namespace e_learning_system
                 MessageBox.Show("Teacher");
                 TeacherForm f = new TeacherForm();
                 f.Show();
+                this.Hide();
                 return;
             }
             reader.Close();
 
+        }
+
+        private void Sign_in_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

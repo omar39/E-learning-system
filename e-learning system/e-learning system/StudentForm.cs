@@ -209,5 +209,10 @@ namespace e_learning_system
             }
 
         }
+
+        private void StudentForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

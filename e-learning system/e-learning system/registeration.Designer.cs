@@ -29,21 +29,23 @@
         private void InitializeComponent()
         {
             this.register_btn = new System.Windows.Forms.Button();
-            this.fullName_txt = new System.Windows.Forms.TextBox();
             this.username_txt = new System.Windows.Forms.TextBox();
             this.password_txt = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.usersTypes = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.phoneNumber_txt = new System.Windows.Forms.TextBox();
+            this.years_lbl = new System.Windows.Forms.Label();
+            this.years_exp_tb = new System.Windows.Forms.TextBox();
+            this.description_tb = new System.Windows.Forms.TextBox();
+            this.des_lbl = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // register_btn
             // 
-            this.register_btn.Location = new System.Drawing.Point(246, 301);
+            this.register_btn.Location = new System.Drawing.Point(275, 350);
             this.register_btn.Margin = new System.Windows.Forms.Padding(2);
             this.register_btn.Name = "register_btn";
             this.register_btn.Size = new System.Drawing.Size(116, 54);
@@ -51,14 +53,6 @@
             this.register_btn.Text = "Register";
             this.register_btn.UseVisualStyleBackColor = true;
             this.register_btn.Click += new System.EventHandler(this.register_btn_Click);
-            // 
-            // fullName_txt
-            // 
-            this.fullName_txt.Location = new System.Drawing.Point(303, 41);
-            this.fullName_txt.Margin = new System.Windows.Forms.Padding(2);
-            this.fullName_txt.Name = "fullName_txt";
-            this.fullName_txt.Size = new System.Drawing.Size(130, 20);
-            this.fullName_txt.TabIndex = 1;
             // 
             // username_txt
             // 
@@ -76,16 +70,6 @@
             this.password_txt.PasswordChar = '*';
             this.password_txt.Size = new System.Drawing.Size(130, 20);
             this.password_txt.TabIndex = 3;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(222, 44);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(53, 13);
-            this.label1.TabIndex = 25;
-            this.label1.Text = "Full Name";
             // 
             // label2
             // 
@@ -112,12 +96,12 @@
             this.usersTypes.FormattingEnabled = true;
             this.usersTypes.Items.AddRange(new object[] {
             "Student",
-            "Admin",
             "Teacher"});
             this.usersTypes.Location = new System.Drawing.Point(303, 185);
             this.usersTypes.Name = "usersTypes";
             this.usersTypes.Size = new System.Drawing.Size(121, 21);
             this.usersTypes.TabIndex = 26;
+            this.usersTypes.SelectedIndexChanged += new System.EventHandler(this.usersTypes_SelectedIndexChanged);
             // 
             // label5
             // 
@@ -144,25 +128,66 @@
             this.phoneNumber_txt.Size = new System.Drawing.Size(130, 20);
             this.phoneNumber_txt.TabIndex = 29;
             // 
+            // years_lbl
+            // 
+            this.years_lbl.AutoSize = true;
+            this.years_lbl.Location = new System.Drawing.Point(172, 249);
+            this.years_lbl.Name = "years_lbl";
+            this.years_lbl.Size = new System.Drawing.Size(105, 13);
+            this.years_lbl.TabIndex = 30;
+            this.years_lbl.Text = "Years Of Experience";
+            this.years_lbl.Visible = false;
+            // 
+            // years_exp_tb
+            // 
+            this.years_exp_tb.Location = new System.Drawing.Point(294, 249);
+            this.years_exp_tb.Name = "years_exp_tb";
+            this.years_exp_tb.Size = new System.Drawing.Size(130, 20);
+            this.years_exp_tb.TabIndex = 31;
+            this.years_exp_tb.Visible = false;
+            // 
+            // description_tb
+            // 
+            this.description_tb.Location = new System.Drawing.Point(294, 289);
+            this.description_tb.Name = "description_tb";
+            this.description_tb.Size = new System.Drawing.Size(130, 20);
+            this.description_tb.TabIndex = 33;
+            this.description_tb.Visible = false;
+            this.description_tb.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // des_lbl
+            // 
+            this.des_lbl.AutoSize = true;
+            this.des_lbl.Location = new System.Drawing.Point(206, 292);
+            this.des_lbl.Name = "des_lbl";
+            this.des_lbl.Size = new System.Drawing.Size(60, 13);
+            this.des_lbl.TabIndex = 32;
+            this.des_lbl.Text = "Description";
+            this.des_lbl.Visible = false;
+            this.des_lbl.Click += new System.EventHandler(this.label1_Click);
+            // 
             // registeration
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(600, 366);
+            this.ClientSize = new System.Drawing.Size(637, 448);
+            this.Controls.Add(this.description_tb);
+            this.Controls.Add(this.des_lbl);
+            this.Controls.Add(this.years_exp_tb);
+            this.Controls.Add(this.years_lbl);
             this.Controls.Add(this.phoneNumber_txt);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.usersTypes);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.password_txt);
             this.Controls.Add(this.username_txt);
-            this.Controls.Add(this.fullName_txt);
             this.Controls.Add(this.register_btn);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "registeration";
-            this.Text = "Form1";
+            this.Text = "Registration";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.registeration_FormClosed);
             this.Load += new System.EventHandler(this.registeration_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -172,15 +197,17 @@
         #endregion
 
         private System.Windows.Forms.Button register_btn;
-        private System.Windows.Forms.TextBox fullName_txt;
         private System.Windows.Forms.TextBox username_txt;
         private System.Windows.Forms.TextBox password_txt;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox usersTypes;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox phoneNumber_txt;
+        private System.Windows.Forms.Label years_lbl;
+        private System.Windows.Forms.TextBox years_exp_tb;
+        private System.Windows.Forms.TextBox description_tb;
+        private System.Windows.Forms.Label des_lbl;
     }
 }

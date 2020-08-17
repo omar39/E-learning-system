@@ -39,7 +39,7 @@
             // signIn_btn
             // 
             this.signIn_btn.Location = new System.Drawing.Point(283, 197);
-            this.signIn_btn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.signIn_btn.Margin = new System.Windows.Forms.Padding(2);
             this.signIn_btn.Name = "signIn_btn";
             this.signIn_btn.Size = new System.Drawing.Size(82, 50);
             this.signIn_btn.TabIndex = 3;
@@ -50,7 +50,7 @@
             // register_btn
             // 
             this.register_btn.Location = new System.Drawing.Point(283, 253);
-            this.register_btn.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.register_btn.Margin = new System.Windows.Forms.Padding(2);
             this.register_btn.Name = "register_btn";
             this.register_btn.Size = new System.Drawing.Size(82, 50);
             this.register_btn.TabIndex = 4;
@@ -61,7 +61,7 @@
             // username_txt
             // 
             this.username_txt.Location = new System.Drawing.Point(283, 79);
-            this.username_txt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.username_txt.Margin = new System.Windows.Forms.Padding(2);
             this.username_txt.Name = "username_txt";
             this.username_txt.Size = new System.Drawing.Size(118, 20);
             this.username_txt.TabIndex = 1;
@@ -69,7 +69,7 @@
             // password_txt
             // 
             this.password_txt.Location = new System.Drawing.Point(283, 110);
-            this.password_txt.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.password_txt.Margin = new System.Windows.Forms.Padding(2);
             this.password_txt.Name = "password_txt";
             this.password_txt.PasswordChar = '*';
             this.password_txt.Size = new System.Drawing.Size(118, 20);
@@ -106,9 +106,10 @@
             this.Controls.Add(this.username_txt);
             this.Controls.Add(this.register_btn);
             this.Controls.Add(this.signIn_btn);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Sign_in";
-            this.Text = "Form1";
+            this.Text = "Sign in";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Sign_in_FormClosed);
             this.Load += new System.EventHandler(this.Sign_in_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

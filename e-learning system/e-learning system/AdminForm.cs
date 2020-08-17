@@ -43,5 +43,10 @@ namespace e_learning_system
         {
             // approve the selected user
         }
+
+        private void AdminForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

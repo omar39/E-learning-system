@@ -190,6 +190,7 @@
             this.MainMenuStrip = this.menuStrip;
             this.Name = "TeacherForm";
             this.Text = "TeacherForm";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.TeacherForm_FormClosed);
             this.Load += new System.EventHandler(this.TeacherForm_Load);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();

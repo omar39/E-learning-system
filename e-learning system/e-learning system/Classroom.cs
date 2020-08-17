@@ -19,7 +19,10 @@ namespace e_learning_system
         {
             return this.subject;
         }
-
+        public int get_id()
+        {
+            return this.id;
+        }
 
         public void addStudent(Student student)
         {
