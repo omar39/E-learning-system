@@ -46,10 +46,11 @@ namespace e_learning_system
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message + "1");
             }
-            
-            query = "SELECT class_id FROM students_classes where student_id != '" + id.ToString() + "'";
+
+            query = "SELECT c.class_id " +
+                    "FROM classrooms c";
             commandDatabase = new MySqlCommand(query, Program.conn);
             //commandDatabase.CommandTimeout = 60;
             try
@@ -69,10 +70,14 @@ namespace e_learning_system
                     Console.WriteLine("No rows found.");
                 }
                 reader.Close();
+                for(int i = 0;i< classes_cmb.Items.Count; i++)
+                {
+                    other_cmb.Items.Remove(classes_cmb.Items[i]);
+                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message+"2");
             }
             query = "SELECT c.subjectName,c.grade,c.subject_description FROM student_subjects AS a, subjects AS c where a.subjectName = c.subjectName and a.student_id <>'" + id.ToString() + "'";
             commandDatabase = new MySqlCommand(query, Program.conn);

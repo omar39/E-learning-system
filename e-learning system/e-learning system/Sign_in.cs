@@ -68,11 +68,12 @@ namespace e_learning_system
                 newuser = UserFactory.make_user("student", username_txt.Text, user_phone);
                 MessageBox.Show("Student");
                 StudentForm f = new StudentForm();
-            reader.Close();
+                reader.Close();
                 f.Show();
                 this.Hide();
                 return;
             }
+                reader.Close();
 
             query = "select user_id from sys_admin where user_id='" + user_id + "'";
             cmd = new MySqlCommand(query, Program.conn);
@@ -82,11 +83,12 @@ namespace e_learning_system
                 newuser = UserFactory.make_user("admin", username_txt.Text, user_phone);
                 MessageBox.Show("Admin");
                 AdminForm f = new AdminForm();
-            reader.Close();
+                reader.Close();
                 f.Show();
                 this.Hide();
                 return;
             }
+                reader.Close();
 
             query = "select user_id from teachers where user_id='" + user_id + "'";
             cmd = new MySqlCommand(query, Program.conn);
@@ -96,11 +98,12 @@ namespace e_learning_system
                 newuser = UserFactory.make_user("teacher", username_txt.Text, user_phone);
                 MessageBox.Show("Teacher");
                 TeacherForm f = new TeacherForm();
-            reader.Close();
+                reader.Close();
                 f.Show();
                 this.Hide();
                 return;
             }
+                reader.Close();
 
         }
 
