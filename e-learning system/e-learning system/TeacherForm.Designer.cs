@@ -35,11 +35,14 @@
             this.classesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.classes_strip = new System.Windows.Forms.ToolStripComboBox();
             this.manageClassGroup = new System.Windows.Forms.GroupBox();
-            this.search_btn = new System.Windows.Forms.Button();
-            this.searchResultsList = new System.Windows.Forms.ListBox();
             this.join_btn = new System.Windows.Forms.Button();
-            this.searchBar = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.other_cmb = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.students_cmb = new System.Windows.Forms.ComboBox();
+            this.grade_box = new System.Windows.Forms.TextBox();
             this.MyClassesGroup = new System.Windows.Forms.GroupBox();
             this.posts_view = new System.Windows.Forms.ListView();
             this.menuStrip.SuspendLayout();
@@ -102,11 +105,14 @@
             // 
             // manageClassGroup
             // 
-            this.manageClassGroup.Controls.Add(this.search_btn);
-            this.manageClassGroup.Controls.Add(this.searchResultsList);
             this.manageClassGroup.Controls.Add(this.join_btn);
-            this.manageClassGroup.Controls.Add(this.searchBar);
+            this.manageClassGroup.Controls.Add(this.label3);
+            this.manageClassGroup.Controls.Add(this.other_cmb);
+            this.manageClassGroup.Controls.Add(this.label2);
             this.manageClassGroup.Controls.Add(this.label1);
+            this.manageClassGroup.Controls.Add(this.button1);
+            this.manageClassGroup.Controls.Add(this.students_cmb);
+            this.manageClassGroup.Controls.Add(this.grade_box);
             this.manageClassGroup.Location = new System.Drawing.Point(592, 62);
             this.manageClassGroup.Margin = new System.Windows.Forms.Padding(4);
             this.manageClassGroup.Name = "manageClassGroup";
@@ -116,57 +122,74 @@
             this.manageClassGroup.TabStop = false;
             this.manageClassGroup.Text = "Manage classes";
             // 
-            // search_btn
-            // 
-            this.search_btn.Location = new System.Drawing.Point(28, 114);
-            this.search_btn.Margin = new System.Windows.Forms.Padding(4);
-            this.search_btn.Name = "search_btn";
-            this.search_btn.Size = new System.Drawing.Size(100, 28);
-            this.search_btn.TabIndex = 5;
-            this.search_btn.Text = "Search";
-            this.search_btn.UseVisualStyleBackColor = true;
-            this.search_btn.Click += new System.EventHandler(this.search_btn_Click);
-            // 
-            // searchResultsList
-            // 
-            this.searchResultsList.FormattingEnabled = true;
-            this.searchResultsList.ItemHeight = 16;
-            this.searchResultsList.Location = new System.Drawing.Point(28, 175);
-            this.searchResultsList.Margin = new System.Windows.Forms.Padding(4);
-            this.searchResultsList.Name = "searchResultsList";
-            this.searchResultsList.Size = new System.Drawing.Size(256, 116);
-            this.searchResultsList.TabIndex = 4;
-            this.searchResultsList.SelectedIndexChanged += new System.EventHandler(this.searchResultsList_SelectedIndexChanged);
-            // 
             // join_btn
             // 
-            this.join_btn.Location = new System.Drawing.Point(185, 319);
-            this.join_btn.Margin = new System.Windows.Forms.Padding(4);
+            this.join_btn.Location = new System.Drawing.Point(120, 262);
             this.join_btn.Name = "join_btn";
-            this.join_btn.Size = new System.Drawing.Size(100, 28);
-            this.join_btn.TabIndex = 3;
-            this.join_btn.Text = "Join";
+            this.join_btn.Size = new System.Drawing.Size(121, 32);
+            this.join_btn.TabIndex = 7;
+            this.join_btn.Text = "Join class";
             this.join_btn.UseVisualStyleBackColor = true;
-            this.join_btn.Visible = false;
             this.join_btn.Click += new System.EventHandler(this.join_btn_Click);
             // 
-            // searchBar
+            // label3
             // 
-            this.searchBar.Location = new System.Drawing.Point(133, 64);
-            this.searchBar.Margin = new System.Windows.Forms.Padding(4);
-            this.searchBar.Name = "searchBar";
-            this.searchBar.Size = new System.Drawing.Size(151, 22);
-            this.searchBar.TabIndex = 1;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(7, 219);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(57, 17);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Classes";
+            // 
+            // other_cmb
+            // 
+            this.other_cmb.FormattingEnabled = true;
+            this.other_cmb.Location = new System.Drawing.Point(120, 216);
+            this.other_cmb.Name = "other_cmb";
+            this.other_cmb.Size = new System.Drawing.Size(121, 24);
+            this.other_cmb.TabIndex = 5;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(7, 106);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(98, 17);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Student grade";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(24, 64);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(7, 50);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(82, 17);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Join a class";
+            this.label1.Size = new System.Drawing.Size(100, 17);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Class students";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(258, 98);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(106, 32);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "Update grade";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // students_cmb
+            // 
+            this.students_cmb.FormattingEnabled = true;
+            this.students_cmb.Location = new System.Drawing.Point(120, 47);
+            this.students_cmb.Name = "students_cmb";
+            this.students_cmb.Size = new System.Drawing.Size(121, 24);
+            this.students_cmb.TabIndex = 1;
+            // 
+            // grade_box
+            // 
+            this.grade_box.Location = new System.Drawing.Point(120, 103);
+            this.grade_box.Name = "grade_box";
+            this.grade_box.Size = new System.Drawing.Size(121, 22);
+            this.grade_box.TabIndex = 0;
             // 
             // MyClassesGroup
             // 
@@ -228,11 +251,14 @@
         private System.Windows.Forms.GroupBox manageClassGroup;
         private System.Windows.Forms.GroupBox MyClassesGroup;
         private System.Windows.Forms.ListView posts_view;
-        private System.Windows.Forms.TextBox searchBar;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button join_btn;
-        private System.Windows.Forms.ListBox searchResultsList;
-        private System.Windows.Forms.Button search_btn;
         private System.Windows.Forms.ToolStripComboBox classes_strip;
+        private System.Windows.Forms.Button join_btn;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox other_cmb;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.ComboBox students_cmb;
+        private System.Windows.Forms.TextBox grade_box;
     }
 }

@@ -74,20 +74,37 @@ namespace e_learning_system
             {
                 MessageBox.Show(ex.Message + "2");
             }
+            query = "select student_id from students_classes " +
+                    "where class_id = '" + classes_strip.SelectedItem.ToString() + "'";
+            commandDatabase = new MySqlCommand(query, Program.conn);
+            try
+            {
+                reader = commandDatabase.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        students_cmb.Items.Add(reader.GetString(0));
+                    }
+
+                }
+                else
+                {
+                    Console.WriteLine("No rows found.");
+                }
+
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + "99");
+            }
+
         }
 
 
-        private void join_btn_Click(object sender, EventArgs e)
-        {
-            string className = searchResultsList.SelectedItem.ToString();
-            classes_strip.Items.Add(className);
-            // add that teacher to that classroom database
-        }
 
-        private void searchResultsList_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            join_btn.Enabled = true;
-        }
+
 
         private void search_btn_Click(object sender, EventArgs e)
         {
@@ -122,11 +139,61 @@ namespace e_learning_system
             {
                 MessageBox.Show(ex.Message + "1");
             }
+            query = "SELECT c.class_id " +
+                    "FROM classrooms c";
+            commandDatabase = new MySqlCommand(query, Program.conn);
+            //commandDatabase.CommandTimeout = 60;
+            try
+            {
+                reader = commandDatabase.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        other_cmb.Items.Add(reader.GetString(0));
+                    }
+
+
+                }
+                else
+                {
+                    Console.WriteLine("No rows found.");
+                }
+                reader.Close();
+                for (int i = 0; i < classes_strip.Items.Count; i++)
+                {
+                    other_cmb.Items.Remove(classes_strip.Items[i]);
+                }
+            }
+    
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + "7");
+            }
+
         }
 
         private void TeacherForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void join_btn_Click(object sender, EventArgs e)
+        {
+            string query = "insert into class_teachers " +
+                "values('" + id + "','" + other_cmb.SelectedItem.ToString() + "')";
+            MySqlCommand commandDatabase = new MySqlCommand(query, Program.conn);
+            try
+            {
+            commandDatabase.ExecuteNonQuery();
+
+            }
+            catch(Exception ex)
+            {
+
+            }
+            classes_strip.Items.Add(other_cmb.SelectedItem);
+            other_cmb.Items.Remove(other_cmb.SelectedItem);
         }
     }
 }

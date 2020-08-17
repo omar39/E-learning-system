@@ -17,10 +17,7 @@ namespace e_learning_system
         
 
         List<string> comments = new List<string>();
-        public override bool signIn()
-        {
-            return true;
-        }
+        
         public Student() { }
         public Student(string name, string phoneNumber)
             :base(name ,phoneNumber)

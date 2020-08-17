@@ -141,7 +141,14 @@ namespace e_learning_system
             string query = "insert into students_classes "+
                             "values('" + id + "','" + other_cmb.SelectedItem.ToString() + "')";
             MySqlCommand commandDatabase = new MySqlCommand(query, Program.conn);
+            try
+            {
             commandDatabase.ExecuteNonQuery();
+            }
+            catch(Exception ex)
+            {
+
+            }
             query = "SELECT subjectName,grade,subject_description" +
                     "FROM subjects, classrooms c " +
                     "where c.classid = '" + other_cmb.SelectedItem.ToString() + "' and c.subjectName = subjects.subjectName";

@@ -18,10 +18,7 @@ namespace e_learning_system
    
         }
         public Teacher() { }
-        public override bool signIn()
-        {
-            throw new NotImplementedException();
-        }
+
         public void setDescription(string description)
         {
             this.description = description;
