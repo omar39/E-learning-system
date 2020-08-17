@@ -21,7 +21,6 @@ namespace e_learning_system
         {
             //check user occurence in database
             string userType = usersTypes.SelectedItem.ToString().ToLower();
-            User user = UserFactory.make_user(userType, username_txt.Text, phoneNumber_txt.Text);
 
             string query = "select MAX(user_id) AS maxuser from users";
             MySqlCommand cmd = new MySqlCommand(query, Program.conn);
@@ -36,6 +35,7 @@ namespace e_learning_system
                 user_id = id.ToString();
             }
             reader.Close();
+            User user = UserFactory.make_user(userType, username_txt.Text, phoneNumber_txt.Text,Int16.Parse(user_id));
 
             query = "insert into users VALUES('"+user_id+"','"+user.name+"','"+user.phoneNumber+"','"+password_txt.Text+"')";
             cmd = new MySqlCommand(query, Program.conn);

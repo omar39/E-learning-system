@@ -5,8 +5,8 @@ namespace e_learning_system
     class Admin : User
     {
         private static Admin instance;
-        private Admin(string name, string phoneNumber)
-            :base(name, phoneNumber)
+        private Admin(string name, string phoneNumber,int id)
+            :base(name, phoneNumber, id)
         {
             
         }
@@ -19,9 +19,9 @@ namespace e_learning_system
         {
             return true;
         }
-        public static Admin getInstance(string name, string phoneNumber)
+        public static Admin getInstance(string name, string phoneNumber,int id)
         {
-            return instance == null ? instance = new Admin(name, phoneNumber) : null;
+            return instance == null ? instance = new Admin(name, phoneNumber,id) : null;
         }
     }
 }

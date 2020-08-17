@@ -12,7 +12,8 @@ namespace e_learning_system
 {
     public partial class Sign_in : Form
     {
-        
+        User newuser;
+
         public Sign_in()
         {
             InitializeComponent();
@@ -34,8 +35,7 @@ namespace e_learning_system
         private void signIn_btn_Click(object sender, EventArgs e)
         {
             UserFactory user_init=new UserFactory();
-            User newuser = null;
-
+            newuser = null;
             string query = "select user_password, user_id, phoneNumber from users where user_name='"+username_txt.Text+"'";
             MySqlCommand cmd = new MySqlCommand(query, Program.conn);
             MySqlDataReader reader = cmd.ExecuteReader();
@@ -65,7 +65,7 @@ namespace e_learning_system
             reader = cmd.ExecuteReader();
             if (reader.HasRows)
             {
-                newuser = UserFactory.make_user("student", username_txt.Text, user_phone);
+                newuser = UserFactory.make_user("student", username_txt.Text, user_phone, Int16.Parse(user_id));
                 MessageBox.Show("Student");
                 StudentForm f = new StudentForm();
                 reader.Close();
@@ -80,7 +80,7 @@ namespace e_learning_system
             reader = cmd.ExecuteReader();
             if (reader.HasRows)
             {
-                newuser = UserFactory.make_user("admin", username_txt.Text, user_phone);
+                newuser = UserFactory.make_user("admin", username_txt.Text, user_phone,Int16.Parse(user_id));
                 MessageBox.Show("Admin");
                 AdminForm f = new AdminForm();
                 reader.Close();
@@ -95,7 +95,7 @@ namespace e_learning_system
             reader = cmd.ExecuteReader();
             if (reader.HasRows)
             {
-                newuser = UserFactory.make_user("teacher", username_txt.Text, user_phone);
+                newuser = UserFactory.make_user("teacher", username_txt.Text, user_phone, Int16.Parse(user_id));
                 MessageBox.Show("Teacher");
                 TeacherForm f = new TeacherForm();
                 reader.Close();

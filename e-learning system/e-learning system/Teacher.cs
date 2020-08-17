@@ -7,13 +7,13 @@ namespace e_learning_system
         protected string description;
         public int yearsOfExperience { set { this.yearsOfExperience = value; } get { return yearsOfExperience; } }
 
-        public Teacher(string name, string phoneNumber,  int yearsOfExperience)
-        :base(name, phoneNumber)
+        public Teacher(string name, string phoneNumber,  int yearsOfExperience,int id)
+        :base(name, phoneNumber,id)
         {
             this.yearsOfExperience = yearsOfExperience;
         }
-        public Teacher(string name, string phoneNumber) 
-            : base(name, phoneNumber)
+        public Teacher(string name, string phoneNumber,int id) 
+            : base(name, phoneNumber,id)
         {
    
         }

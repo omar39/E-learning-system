@@ -19,8 +19,8 @@ namespace e_learning_system
         List<string> comments = new List<string>();
         
         public Student() { }
-        public Student(string name, string phoneNumber)
-            :base(name ,phoneNumber)
+        public Student(string name, string phoneNumber,int id)
+            :base(name ,phoneNumber,id)
         {
         }
         public void registerToClass(Classroom class1)

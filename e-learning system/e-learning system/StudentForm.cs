@@ -22,6 +22,7 @@ namespace e_learning_system
 
         private void StudentForm_Load(object sender, EventArgs e)
         {
+
             string query = "SELECT class_id FROM students_classes where student_id = '" + id.ToString() + "'";
             MySqlCommand commandDatabase = new MySqlCommand(query, Program.conn);
             //commandDatabase.CommandTimeout = 60;
@@ -138,20 +139,22 @@ namespace e_learning_system
 
         private void register_class_btn_Click(object sender, EventArgs e)
         {
+            string new_subject = "";
             string query = "insert into students_classes "+
                             "values('" + id + "','" + other_cmb.SelectedItem.ToString() + "')";
             MySqlCommand commandDatabase = new MySqlCommand(query, Program.conn);
             try
             {
-            commandDatabase.ExecuteNonQuery();
+                commandDatabase.ExecuteNonQuery();
             }
             catch(Exception ex)
             {
 
             }
-            query = "SELECT subjectName,grade,subject_description" +
-                    "FROM subjects, classrooms c " +
-                    "where c.classid = '" + other_cmb.SelectedItem.ToString() + "' and c.subjectName = subjects.subjectName";
+            query = "SELECT subjects.subjectName,subjects.grade,subjects.subject_description "+
+                    "FROM subjects, classrooms c where c.class_id = '"+other_cmb.SelectedItem.ToString()+"' "+
+                    "and c.subjectName = subjects.subjectName";
+            commandDatabase = new MySqlCommand(query, Program.conn);
             MySqlDataReader reader;
             try
             {
@@ -160,23 +163,34 @@ namespace e_learning_system
                 {
                     while (reader.Read())
                     {
-                        student.set_subjects(reader.GetString(0), reader.GetDouble(1), reader.GetString(2));
-                        student.set_grade(reader.GetString(0), 0);
+                        new_subject = reader.GetString(0);
+/*                        student.set_subjects(reader.GetString(0), reader.GetDouble(1), reader.GetString(2));
+                        student.set_grade(reader.GetString(0), 0);*/
                     }
-                    reader.Close();
 
                 }
                 else
                 {
                     Console.WriteLine("No rows found.");
                 }
+                    reader.Close();
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message+"50");
             }
             classes_cmb.Items.Add(other_cmb.SelectedItem);
             other_cmb.Items.Remove(other_cmb.SelectedItem);
+
+            int x = 0;
+            query = "insert into student_subjects values ('" + id + "','" + new_subject + "', 0)";
+            commandDatabase = new MySqlCommand(query, Program.conn);
+
+            commandDatabase.ExecuteNonQuery();
+
+
+
+
         }
 
         private void choose_class_btn_Click(object sender, EventArgs e)
@@ -241,6 +255,11 @@ namespace e_learning_system
         private void StudentForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void gpa_tb_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
